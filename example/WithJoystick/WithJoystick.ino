@@ -42,24 +42,34 @@ void GetDirection(void)
   if((PreDirect + CurDirect) == 5)CurDirect = PreDirect;
 }
 
+
+long time_20ms  = 0;
+
+long time_300ms = 0;
 void setup()
 {
  Serial.begin(9600);
   snake.init();
+  
+  time_20ms = millis();
+  time_300ms = millis();
 }
+
+
 
 void loop()
 {  
-  if(Flag_20ms)
+  if((millis()-time_20ms) > 20)
  {
+   time_20ms = millis();
    GetDirection();
-   Flag_20ms = false;
+   
  } 
- if(Flag_300ms)
+ if((millis()-time_300ms) > 300)
  {
+   time_300ms = millis();
    Rb.blankDisplay();
   snake.SnakeMove(CurDirect);
-  Flag_300ms = false;
+  //Flag_300ms = false;
  }
 }
-
