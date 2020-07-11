@@ -12,7 +12,7 @@ before_install:
 script:
    - chmod +x seeed-arduino-ci.sh
    - cat $PWD/seeed-arduino-ci.sh
-   - bash $PWD/seeed-arduino-ci.sh nothing
+   - bash $PWD/seeed-arduino-ci.sh -b arduino:avr:uno nothing
 
 notifications:
   email:
